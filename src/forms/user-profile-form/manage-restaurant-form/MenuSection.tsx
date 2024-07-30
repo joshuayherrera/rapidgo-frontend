@@ -4,8 +4,10 @@ import { useFieldArray, useFormContext } from "react-hook-form";
 import MenuItemInput from "./MenuItemInput";
 
 const MenuSection = () => {
+  // Obtiene el control del formulario del contexto
   const { control } = useFormContext();
   
+  // Usa useFieldArray para manejar un array de campos (menuItems)
   const { fields, append, remove } = useFieldArray({
     control,
     name: "menuItems",
@@ -19,13 +21,17 @@ const MenuSection = () => {
                 Create yout menu and give each item a name and price
             </FormDescription>
         </div>
+        {/* FormField es un componente de alto nivel para manejar campos de formulario */}
         <FormField 
             control={control}
             name="menuItems" 
             render={() => (
+                // render prop: define cómo se renderiza este campo
                 <FormItem className="flex flex-col gap-4 py-4">
+                    {/* Mapea cada elemento del array a un componente MenuItemInput */}
                     {fields.map((_, index)=>(
                         <MenuItemInput 
+                            key={index}
                             index={index} 
                             removeMenuItem={() => remove(index)}
                         />

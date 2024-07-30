@@ -64,7 +64,9 @@ const ManageRestaurantForm = ({onSave, isLoading}: Props) => {
             <DetailsSection />
             <Separator />
             <CuisinesSection />
+            <Separator />
             <MenuSection />
+            <Separator />
         </form>
     </Form>
   )
